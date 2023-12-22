@@ -1,4 +1,5 @@
 import { basename, extname, join, posix } from 'path';
+import type Hexo from '../../hexo';
 
 const rCaptionTitleFile = /(.*)?(?:\s+|^)(\/*\S+)/;
 const rLang = /\s*lang:(\w+)/i;
@@ -15,7 +16,7 @@ const escapeBackslash = path => {
   // Replace backslashes on Windows
   return path.replace(/\\/g, '/');
 };
-export = ctx => function includeCodeTag(args) {
+export = (ctx: Hexo) => function includeCodeTag(args: string[]) {
   let codeDir = ctx.config.code_dir;
   let arg = args.join(' ');
 
