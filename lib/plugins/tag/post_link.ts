@@ -41,8 +41,7 @@ export = (ctx: Hexo) => {
     const attrTitle = escapeHTML(post.title || post.slug);
     if (escape === 'true') title = escapeHTML(title);
 
-    const url = url_for.call(ctx, post.path) + (hash ? `#${hash}` : '');
-    const link = encodeURL(url);
+    const link = url_for.call(ctx, post.path + (hash ? `#${hash}` : ''));
 
     return `<a href="${link}" title="${attrTitle}">${title}</a>`;
   };
